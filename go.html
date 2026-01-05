@@ -1,41 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Please wait...</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-
-<h3 style="text-align:center;margin-top:40px;">
-Please wait...
-</h3>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
 <script>
-const params = new URLSearchParams(window.location.search);
+firebase.initializeApp({
+   apiKey: "AIzaSyCJ-rLMcTWZATZm1Mvzi519GpEzaW4Ks8M",
+  authDomain: "linksnapp-405bb.firebaseapp.com",
+  databaseURL: "https://linksnapp-405bb-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "linksnapp-405bb"
+  
+});
+
+const db = firebase.database();
+
+const params = new URLSearchParams(location.search);
 const code = params.get("c");
 
 if(!code){
-  document.body.innerHTML = "Invalid or missing link";
+  document.body.innerHTML = "Invalid link";
 }else{
-  // 🔁 YAHAN ORIGINAL URL FETCH LOGIC AAYEGA
-  // Abhi test ke liye direct redirect example:
-
-  const demoMap = {
-    "abc123": "https://example.com"
-  };
-
-  const target = demoMap[code];
-
-  if(!target){
-    document.body.innerHTML = "Link expired or not found";
-  }else{
-    setTimeout(()=>{
-      window.location.href = target;
-    }, 3000); // 3 sec delay (ads ke liye)
-  }
+  db.ref("links/" + code).once("value").then(snap=>{
+    if(!snap.exists()){
+      document.body.innerHTML = "Link expired or not found";
+    }else{
+      const url = snap.val().url;
+      setTimeout(()=>{
+        location.href = url;
+      }, 3000);
+    }
+  });
 }
 </script>
 
-</body>
-</html>

@@ -1,35 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Redirecting...</title>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
-
-    const firebaseConfig = {
-    apiKey: "AIzaSyCJ-rLMcTWZATZm1Mvzi519GpEzaW4Ks8M",
-  authDomain: "linksnapp-405bb.firebaseapp.com",
-  databaseURL: "https://linksnapp-405bb-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "linksnapp-405bb"  "
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    const code = new URLSearchParams(location.search).get("c");
-
-    get(ref(db, "links/" + code)).then(snap => {
-      if (snap.exists()) {
-        setTimeout(() => {
-          location.href = "/page-1.html?c=" + code;
-        }, 1500);
-      } else {
-        document.body.innerHTML = "Link not found";
-      }
-    });
-  </script>
+<meta charset="UTF-8">
+<title>Please wait...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<h3>Please wait…</h3>
+
+<h3 style="text-align:center;margin-top:40px;">
+Please wait...
+</h3>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const code = params.get("c");
+
+if(!code){
+  document.body.innerHTML = "Invalid or missing link";
+}else{
+  // 🔁 YAHAN ORIGINAL URL FETCH LOGIC AAYEGA
+  // Abhi test ke liye direct redirect example:
+
+  const demoMap = {
+    "abc123": "https://example.com"
+  };
+
+  const target = demoMap[code];
+
+  if(!target){
+    document.body.innerHTML = "Link expired or not found";
+  }else{
+    setTimeout(()=>{
+      window.location.href = target;
+    }, 3000); // 3 sec delay (ads ke liye)
+  }
+}
+</script>
+
 </body>
 </html>

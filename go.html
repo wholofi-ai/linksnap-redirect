@@ -1,33 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Please wait...</title>
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+<h3 style="text-align:center;margin-top:40px">
+Please wait… Redirecting
+</h3>
+
+<!-- 🔥 AD CODE HERE (Cloudflare allowed) -->
+<script>
+  // yahan apna direct link / popunder lagao
+</script>
+
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
 <script>
 firebase.initializeApp({
-   apiKey: "AIzaSyCJ-rLMcTWZATZm1Mvzi519GpEzaW4Ks8M",
+  apiKey: "AIzaSyCJ-rLMcTWZATZm1Mvzi519GpEzaW4Ks8M",
   authDomain: "linksnapp-405bb.firebaseapp.com",
   databaseURL: "https://linksnapp-405bb-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "linksnapp-405bb"
-  
 });
 
 const db = firebase.database();
-
-const params = new URLSearchParams(location.search);
-const code = params.get("c");
+const code = new URLSearchParams(location.search).get("c");
 
 if(!code){
-  document.body.innerHTML = "Invalid link";
-}else{
-  db.ref("links/" + code).once("value").then(snap=>{
-    if(!snap.exists()){
-      document.body.innerHTML = "Link expired or not found";
-    }else{
-      const url = snap.val().url;
-      setTimeout(()=>{
-        location.href = url;
-      }, 3000);
-    }
-  });
+  document.body.innerHTML="Invalid link";
 }
+
+db.ref("links/" + code).once("value").then(snap=>{
+  if(!snap.exists()){
+    document.body.innerHTML="Link expired or not found";
+    return;
+  }
+
+  const url = snap.val().url;
+
+  setTimeout(()=>{
+    location.href = url;
+  }, 3000); // 3 sec ads time
+});
 </script>
+
+</body>
+</html>
 

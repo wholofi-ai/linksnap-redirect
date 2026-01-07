@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html>
+<head>
+<title>Redirecting...</title>
+</head>
 <body>
-<p id="msg">Redirecting...</p>
+
+<h2 id="txt">Please wait 5 seconds...</h2>
 
 <script>
-const msg = document.getElementById("msg");
 const code = new URLSearchParams(location.search).get("c");
+const txt = document.getElementById("txt");
 
 if(!code){
-  msg.innerText = "Code missing";
+  txt.innerText = "Invalid link";
   throw "";
 }
 
 const DB =
 "https://linksnapp-405bb-default-rtdb.asia-southeast1.firebasedatabase.app/links/"+code+".json";
 
-fetch(DB)
-.then(r => r.json())
-.then(d => {
-  if(!d){
-    msg.innerText = "No data in Firebase";
-    return;
-  }
-  if(!d.url){
-    msg.innerText = "URL field missing";
-    return;
-  }
-
-  msg.innerText = "Redirecting to original...";
-  location.href = d.url;
-})
-.catch(err=>{
-  msg.innerText = "Fetch error";
-});
+setTimeout(() => {
+  fetch(DB)
+  .then(r => r.json())
+  .then(d => {
+    if(!d || !d.url){
+      txt.innerText = "Link not found or expired";
+      return;
+    }
+    location.href = d.url;
+  });
+}, 5000); // 5 seconds delay
 </script>
+
 </body>
 </html>
 

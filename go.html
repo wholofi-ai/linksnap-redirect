@@ -1,53 +1,46 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Please wait...</title>
-<meta name="viewport" content="width=device-width">
-</head>
 <body>
-
-<h3 style="text-align:center;margin-top:40px">
-Please wait… Redirecting
-</h3>
-
-<!-- 🔥 AD CODE HERE (Cloudflare allowed) -->
-<script>
-  // yahan apna direct link / popunder lagao
-</script>
-
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<p>Redirecting...</p>
 
 <script>
-firebase.initializeApp({
-  apiKey: "AIzaSyCJ-rLMcTWZATZm1Mvzi519GpEzaW4Ks8M",
-  authDomain: "linksnapp-405bb.firebaseapp.com",
-  databaseURL: "https://linksnapp-405bb-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "linksnapp-405bb"
-});
-
-const db = firebase.database();
 const code = new URLSearchParams(location.search).get("c");
-
 if(!code){
-  document.body.innerHTML="Invalid link";
+  document.body.innerText = "Invalid link";
+  throw "";
 }
 
-db.ref("links/" + code).once("value").then(snap=>{
-  if(!snap.exists()){
-    document.body.innerHTML="Link expired or not found";
+const STEP_KEY = "step_" + code;
+let step = Number(localStorage.getItem(STEP_KEY) || 0) + 1;
+localStorage.setItem(STEP_KEY, step);
+
+const DB =
+"https://linksnapp-405bb-default-rtdb.asia-southeast1.firebasedatabase.app/links/"+code+".json";
+
+fetch(DB).then(r=>r.json()).then(d=>{
+  if(!d || !d.url){
+    document.body.innerText = "Link not found";
     return;
   }
 
-  const url = snap.val().url;
+  // STEP 1 → AD PAGE 1
+  if(step === 1){
+    location.href = "https://YOUR-AD-PAGE-1.html?c=" + code;
+    return;
+  }
 
-  setTimeout(()=>{
-    location.href = url;
-  }, 3000); // 3 sec ads time
+  // STEP 2 → AD PAGE 2
+  if(step === 2){
+    location.href = "https://YOUR-AD-PAGE-2.html?c=" + code;
+    return;
+  }
+
+  // STEP 3 → ORIGINAL SITE
+  localStorage.removeItem(STEP_KEY);
+  location.href = d.url;
 });
 </script>
 
 </body>
 </html>
-

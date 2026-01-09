@@ -1,28 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Continue</title>
-</head>
 <body>
-
-<h3>Please wait...</h3>
-
-<!-- ✅ ADS (Monetag / Propeller यहाँ लगाओ) -->
-
+Please wait 5 seconds...
 <script>
-const p = new URLSearchParams(location.search);
-const c = p.get("c");
-
-if (!c) {
-  document.body.innerText = "Missing link";
-} else {
-  sessionStorage.setItem("finalUrl", c);
-
-  setTimeout(() => {
-    window.location.href = "page-2.html";
-  }, 4000);
-}
+setTimeout(()=>{
+  location.href="page2.html";
+},5000);
 </script>
-
 </body>
 </html>

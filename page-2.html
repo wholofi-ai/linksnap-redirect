@@ -1,46 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Advertisement</title>
-
-<!-- ✅ VIGNETTE -->
-<script>
-(function(s){
-  s.dataset.zone='10435708';
-  s.src='https://gizokraijaw.net/vignette.min.js';
-})(document.body.appendChild(document.createElement('script')));
-</script>
-
-<!-- ✅ IN-PAGE PUSH -->
-<script>
-(function(s){
-  s.dataset.zone='10435705';
-  s.src='https://nap5k.com/tag.min.js';
-})(document.body.appendChild(document.createElement('script')));
-</script>
-
+  <title>Advertisement Page 2</title>
 </head>
-
 <body>
 
-<h3>Please wait…</h3>
+<h2>Advertisement Page 2</h2>
 
-<!-- ✅ POPUNDER -->
 <script>
-(function(s){
-  s.dataset.zone='10435665';
-  s.src='https://al5sm.com/tag.min.js';
-})(document.body.appendChild(document.createElement('script')));
-</script>
+const c = new URLSearchParams(window.location.search).get("c");
 
-<!-- 🔥 REDIRECT CODE (BODY KE LAST ME) -->
-<script>
-const c = new URLSearchParams(location.search).get("c");
-
-setTimeout(function(){
-  if(c){
+setTimeout(function () {
+  if (c) {
     window.location.href = decodeURIComponent(c);
+  } else {
+    document.body.innerHTML = "Missing link";
   }
 }, 5000);
 </script>

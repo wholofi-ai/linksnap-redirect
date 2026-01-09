@@ -21,10 +21,13 @@
 const c = new URLSearchParams(location.search).get("c");
 
 setTimeout(function(){
-  window.location.href =
-    "/page-2.html?c=" + encodeURIComponent(c);
+  if(c){
+    window.location.href =
+      "https://linksnap-redirect.pages.dev/page-2.html?c=" 
+      + encodeURIComponent(c);
+  } else {
+    document.body.innerHTML = "Invalid or missing link.";
+  }
 }, 3000);
 </script>
 
-</body>
-</html>

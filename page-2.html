@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Final Redirect</title>
+<meta charset="UTF-8">
+<title>Page 2</title>
 </head>
 <body>
 
-<h3>Redirecting to destination…</h3>
+<h3>Please wait…</h3>
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const finalLink = params.get("url");
+const link = params.get("url");
 
-if (!finalLink) {
-  document.body.innerHTML = "Link not found";
+if (!link || !link.startsWith("http")) {
+  document.body.innerHTML = "<h3>Link not found</h3>";
 } else {
   setTimeout(() => {
-    window.location.href = decodeURIComponent(finalLink);
-  }, 5000); // 5 sec delay
+    location.href = decodeURIComponent(link);
+  }, 5000);
 }
 </script>
 

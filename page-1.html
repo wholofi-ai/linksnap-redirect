@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Redirecting...</title>
+<meta charset="UTF-8">
+<title>Page 1</title>
 </head>
 <body>
 
-<h3>Please wait…</h3>
-
 <script>
 const params = new URLSearchParams(window.location.search);
-const link = params.get("c") || params.get("url");
+const link = params.get("c");
 
-if (!link) {
-  document.body.innerHTML = "Invalid link";
+if (!link || !link.startsWith("http")) {
+  document.body.innerHTML = "<h3>Link not found</h3>";
 } else {
-  // Page-2 par forward
-  window.location.href =
-    "/page-2.html?url=" + encodeURIComponent(link);
+  location.href = "/page-2.html?url=" + encodeURIComponent(link);
 }
 </script>
 

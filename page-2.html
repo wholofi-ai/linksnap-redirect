@@ -1,27 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Redirecting...</title>
-</head>
 <body>
-
-<h3>Redirecting to destination...</h3>
-
-<!-- ✅ ADS (Strong ads यहाँ) -->
-
+<button onclick="go()">Continue</button>
 <script>
-const c = sessionStorage.getItem("finalUrl");
-
-if (!c) {
-  document.body.innerText = "Link not found";
-} else {
-  const finalUrl = atob(c);
-
-  setTimeout(() => {
-    window.location.href = finalUrl;
-  }, 5000);
+function go(){
+  let u = sessionStorage.getItem("url");
+  if(u) location.href = u;
 }
 </script>
-
 </body>
 </html>

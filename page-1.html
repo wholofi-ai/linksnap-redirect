@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Page 1</title>
+  <title>Continue</title>
 </head>
 <body>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const link = params.get("c");
+<h3>Please wait...</h3>
 
-if (!link || !link.startsWith("http")) {
-  document.body.innerHTML = "<h3>Link not found</h3>";
+<!-- ✅ ADS (Monetag / Propeller यहाँ लगाओ) -->
+
+<script>
+const p = new URLSearchParams(location.search);
+const c = p.get("c");
+
+if (!c) {
+  document.body.innerText = "Missing link";
 } else {
-  location.href = "/page-2.html?url=" + encodeURIComponent(link);
+  sessionStorage.setItem("finalUrl", c);
+
+  setTimeout(() => {
+    window.location.href = "page-2.html";
+  }, 4000);
 }
 </script>
 

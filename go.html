@@ -1,44 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Redirecting</title>
-<style>
-body{text-align:center;font-family:Arial;padding:30px}
-.ad{margin:15px 0}
-</style>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
 </head>
 <body>
 
-<h3>Redirecting…</h3>
-
-<!-- 🔥 NATIVE AD -->
-<div class="ad">
-<!-- PASTE NATIVE CODE HERE -->
-</div>
-
-<!-- 🔥 SOCIAL BAR -->
-<script src="YOUR_SOCIAL_BAR_JS.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
 <script>
-firebase.initializeApp({
- databaseURL:"https://linksnapp-405bb-default-rtdb.asia-southeast1.firebasedatabase.app"
-});
+const c = new URLSearchParams(location.search).get("c");
 
-const c=new URLSearchParams(location.search).get("c");
-if(c){
- firebase.database().ref("links/"+c).once("value").then(s=>{
-  if(!s.exists()){document.body.innerHTML="Expired";return;}
-  const v=s.val();
-  firebase.database().ref("links/"+c+"/clicks").set((v.clicks||0)+1);
-  setTimeout(()=>location.href=v.url,5000);
- });
+if (c) {
+  window.location.href =
+    "/page-1.html?c=" + encodeURIComponent(c);
 }
 </script>
 
 </body>
 </html>
-

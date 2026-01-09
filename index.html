@@ -2,10 +2,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>LinkSnap Redirect</title>
+  <title>Redirecting...</title>
+  <script>
+    const p = new URLSearchParams(location.search);
+    const url = p.get("url");
+    if (url) location.replace(url);
+    else document.body.innerHTML = "No URL found";
+  </script>
 </head>
 <body>
-  <h2>LinkSnap Redirect System</h2>
-  <p>Invalid or missing link.</p>
+Redirecting...
 </body>
 </html>

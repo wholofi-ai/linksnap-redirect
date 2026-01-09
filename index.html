@@ -1,12 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-    <meta name="monetag" content="d31350a3376ee0b6e873e401e468a60b">
-  <title>LinkSnap Redirect</title>
+<meta charset="UTF-8">
+<title>Redirecting...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  text-align:center;
+  padding:40px;
+  background:#f9fafb;
+}
+.box{
+  background:#fff;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+.btn{
+  display:none;
+  margin-top:20px;
+  padding:12px 20px;
+  background:#4f46e5;
+  color:#fff;
+  border-radius:6px;
+  text-decoration:none;
+}
+</style>
 </head>
+
 <body>
-  <h2>LinkSnap Redirect System</h2>
-  <p>Invalid or missing link.</p>
+
+<div class="box">
+  <h2 id="title">Please wait...</h2>
+  <p id="msg">Preparing your link</p>
+  <a id="btn" class="btn">Continue</a>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const code = params.get("c");
+let step = parseInt(params.get("step") || "1");
+
+if(!code){
+  document.body.innerHTML="<h3>Link not found</h3>";
+  throw new Error("Missing code");
+}
+
+function decode(b64){
+  return decodeURIComponent(escape(atob(b64)));
+}
+
+const finalUrl = decode(code);
+
+// STEP 1
+if(step === 1){
+  document.getElementById("title").innerText="Step 1 / 2";
+  document.getElementById("msg").innerText="Please wait 5 seconds";
+  setTimeout(()=>{
+    location.href = "?step=2&c="+code;
+  },5000);
+}
+
+// STEP 2
+if(step === 2){
+  document.getElementById("title").innerText="Step 2 / 2";
+  document.getElementById("msg").innerText="Click continue to open link";
+  const btn=document.getElementById("btn");
+  btn.style.display="inline-block";
+  btn.href=finalUrl;
+}
+</script>
+
 </body>
 </html>

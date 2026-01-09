@@ -1,37 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Redirecting...</title>
-
-  <!-- MONETAG / PROPELLER ADS yahin rahenge -->
-  <!-- Vignette -->
-  <script>(function(s){s.dataset.zone='10435708',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement,document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
-  <!-- Push -->
-  <script>(function(s){s.dataset.zone='10435705',s.src='https://nap5k.com/tag.min.js'})([document.documentElement,document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
-  <!-- Popunder -->
-  <script>(function(s){s.dataset.zone='10435665',s.src='https://al5sm.com/tag.min.js'})([document.documentElement,document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
+  <meta charset="UTF-8">
+  <title>Final Redirect</title>
 </head>
 <body>
 
-<h2>Please wait…</h2>
+<h3>Redirecting to destination…</h3>
 
 <script>
-const code = new URLSearchParams(location.search).get("c");
+const params = new URLSearchParams(window.location.search);
+const finalLink = params.get("url");
 
-/* 🔴 TEMP mapping (testing) */
-const links = {
-  "0i7s5z": "https://google.com"
-};
-
-if(!code || !links[code]){
-  document.body.innerHTML = "Link not found or expired";
-}else{
+if (!finalLink) {
+  document.body.innerHTML = "Link not found";
+} else {
   setTimeout(() => {
-    location.href = links[code];
-  }, 5000); // 5 sec ads ke liye
+    window.location.href = decodeURIComponent(finalLink);
+  }, 5000); // 5 sec delay
 }
 </script>
 

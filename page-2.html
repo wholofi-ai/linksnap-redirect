@@ -1,58 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Please wait...</title>
-</head>
+<meta charset="UTF-8">
+<title>Advertisement</title>
 
-<body>
-
-<h3>Loading… Please wait</h3>
-
-<!-- ===================== -->
-<!-- 🔥 POPUNDER (ONCLICK) -->
-<!-- ===================== -->
-<script>
-(function(s){
-  s.dataset.zone='10435665';
-  s.src='https://al5sm.com/tag.min.js';
-})([document.documentElement, document.body]
-.filter(Boolean).pop()
-.appendChild(document.createElement('script')));
-</script>
-
-<!-- ===================== -->
-<!-- 🔥 IN-PAGE PUSH -->
-<!-- ===================== -->
-<script>
-(function(s){
-  s.dataset.zone='10435705';
-  s.src='https://nap5k.com/tag.min.js';
-})([document.documentElement, document.body]
-.filter(Boolean).pop()
-.appendChild(document.createElement('script')));
-</script>
-
-<!-- ===================== -->
-<!-- 🔥 VIGNETTE BANNER -->
-<!-- ===================== -->
+<!-- ✅ VIGNETTE -->
 <script>
 (function(s){
   s.dataset.zone='10435708';
   s.src='https://gizokraijaw.net/vignette.min.js';
-})([document.documentElement, document.body]
-.filter(Boolean).pop()
-.appendChild(document.createElement('script')));
+})(document.body.appendChild(document.createElement('script')));
 </script>
 
-<!-- ===================== -->
-<!-- 🔁 REDIRECT AFTER DELAY -->
-<!-- ===================== -->
+<!-- ✅ IN-PAGE PUSH -->
+<script>
+(function(s){
+  s.dataset.zone='10435705';
+  s.src='https://nap5k.com/tag.min.js';
+})(document.body.appendChild(document.createElement('script')));
+</script>
+
+</head>
+
+<body>
+
+<h3>Please wait…</h3>
+
+<!-- ✅ POPUNDER -->
+<script>
+(function(s){
+  s.dataset.zone='10435665';
+  s.src='https://al5sm.com/tag.min.js';
+})(document.body.appendChild(document.createElement('script')));
+</script>
+
+<!-- 🔥 REDIRECT CODE (BODY KE LAST ME) -->
 <script>
 const c = new URLSearchParams(location.search).get("c");
-setTimeout(() => {
-  window.location.href =
-  "https://linksnap-redirect.pages.dev/go.html?c=" + c;
+
+setTimeout(function(){
+  if(c){
+    window.location.href = decodeURIComponent(c);
+  }
 }, 5000);
 </script>
 

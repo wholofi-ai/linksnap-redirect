@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Page 2</title>
+  <title>Redirecting...</title>
 </head>
 <body>
 
-<h3>Please wait…</h3>
+<h3>Redirecting to destination...</h3>
+
+<!-- ✅ ADS (Strong ads यहाँ) -->
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const link = params.get("url");
+const c = sessionStorage.getItem("finalUrl");
 
-if (!link || !link.startsWith("http")) {
-  document.body.innerHTML = "<h3>Link not found</h3>";
+if (!c) {
+  document.body.innerText = "Link not found";
 } else {
+  const finalUrl = atob(c);
+
   setTimeout(() => {
-    location.href = decodeURIComponent(link);
+    window.location.href = finalUrl;
   }, 5000);
 }
 </script>

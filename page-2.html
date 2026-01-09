@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Advertisement Page 2</title>
+  <title>Redirecting...</title>
+
+  <!-- MONETAG / PROPELLER ADS yahin rahenge -->
+  <!-- Vignette -->
+  <script>(function(s){s.dataset.zone='10435708',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement,document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+  <!-- Push -->
+  <script>(function(s){s.dataset.zone='10435705',s.src='https://nap5k.com/tag.min.js'})([document.documentElement,document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+  <!-- Popunder -->
+  <script>(function(s){s.dataset.zone='10435665',s.src='https://al5sm.com/tag.min.js'})([document.documentElement,document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
 </head>
 <body>
 
-<h2>Advertisement Page 2</h2>
+<h2>Please wait…</h2>
 
 <script>
-const c = new URLSearchParams(window.location.search).get("c");
+const code = new URLSearchParams(location.search).get("c");
 
-setTimeout(function () {
-  if (c) {
-    window.location.href = decodeURIComponent(c);
-  } else {
-    document.body.innerHTML = "Missing link";
-  }
-}, 5000);
+/* 🔴 TEMP mapping (testing) */
+const links = {
+  "0i7s5z": "https://google.com"
+};
+
+if(!code || !links[code]){
+  document.body.innerHTML = "Link not found or expired";
+}else{
+  setTimeout(() => {
+    location.href = links[code];
+  }, 5000); // 5 sec ads ke liye
+}
 </script>
 
 </body>

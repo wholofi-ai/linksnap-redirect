@@ -1,58 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Redirecting...</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting...</title>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("c");
+
+    if (!code) {
+      document.body.innerHTML = "Invalid link";
+    } else {
+      // TEMP TEST REDIRECT
+      setTimeout(() => {
+        window.location.href = "page1.html?c=" + code;
+      }, 1000);
+    }
+  </script>
 </head>
-
 <body>
-<p style="text-align:center;margin-top:40px;font-size:18px;">
-  Redirecting… Please wait ⏳
-</p>
-
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-<script>
-firebase.initializeApp({
-  apiKey: "AIzaSyCJ-rLMcTWZATZm1Mvzi519GpEzaW4Ks8M",
-  authDomain: "linksnapp-405bb.firebaseapp.com",
-  databaseURL: "https://linksnapp-405bb-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "linksnapp-405bb"
-});
-
-const db = firebase.database();
-const params = new URLSearchParams(location.search);
-const code = params.get("c");
-
-if(!code){
-  document.body.innerHTML = "Invalid link";
-} else {
-  db.ref("links/" + code).once("value")
-    .then(snap => {
-      if(!snap.exists()){
-        document.body.innerHTML = "Link not found or expired";
-        return;
-      }
-
-      const data = snap.val();
-
-      // OPTIONAL: click count
-      db.ref("links/" + code + "/clicks")
-        .set((data.clicks || 0) + 1);
-
-      // Redirect
-      setTimeout(()=>{
-        location.href = data.url;
-      }, 1200);
-    })
-    .catch(()=>{
-      document.body.innerHTML = "Something went wrong";
-    });
-}
-</script>
-
+Redirecting...
 </body>
 </html>

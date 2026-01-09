@@ -1,10 +1,30 @@
-<h2>Advertisement Page 1</h2>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Advertisement</title>
+
+<!-- 🔹 POPUNDER / ONCLICK -->
+<script>
+(function(s){
+  s.dataset.zone='10435665';
+  s.src='https://al5sm.com/tag.min.js';
+})(document.body.appendChild(document.createElement('script')));
+</script>
+
+</head>
+
+<body>
+<h3>Please wait…</h3>
 
 <script>
 const c = new URLSearchParams(location.search).get("c");
-setTimeout(()=>{
-  location.href =
-  "https://linksnap-redirect.pages.dev/go.html?c=" + c;
+
+setTimeout(function(){
+  window.location.href =
+    "/page-2.html?c=" + encodeURIComponent(c);
 }, 3000);
 </script>
 
+</body>
+</html>

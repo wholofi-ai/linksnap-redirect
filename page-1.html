@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Advertisement Page 1</title>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
 </head>
 <body>
 
-<h2>Advertisement Page 1</h2>
+<h3>Please wait…</h3>
 
 <script>
-const c = new URLSearchParams(window.location.search).get("c");
+const params = new URLSearchParams(window.location.search);
+const link = params.get("c") || params.get("url");
 
-setTimeout(function () {
-  if (c) {
-    window.location.href =
-      "https://linksnap-redirect.pages.dev/page-2.html?c=" +
-      encodeURIComponent(c);
-  } else {
-    document.body.innerHTML = "Missing link";
-  }
-}, 3000);
+if (!link) {
+  document.body.innerHTML = "Invalid link";
+} else {
+  // Page-2 par forward
+  window.location.href =
+    "/page-2.html?url=" + encodeURIComponent(link);
+}
 </script>
 
 </body>

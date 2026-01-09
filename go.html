@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
 </head>
-<body>
+</body>
 
+  
 <script>
 const c = new URLSearchParams(location.search).get("c");
-
 if (c) {
-  window.location.href =
-    "/page-1.html?c=" + encodeURIComponent(c);
+  location.href =
+   "https://linksnapp-redirect.pages.dev/page-1.html?c=" + c;
 }
 </script>
 

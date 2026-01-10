@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
-<body>
-<button onclick="go()">Continue</button>
+<head>
+<title>Redirecting…</title>
+
 <script>
-function go(){
-  let u = sessionStorage.getItem("url");
-  if(u) location.href = u;
+const c = new URLSearchParams(location.search).get("c");
+if(!c){
+ document.body.innerHTML="Invalid link";
+ throw "";
 }
+
+const finalUrl = atob(c);
+setTimeout(()=>{
+ location.href = finalUrl;
+},3000);
 </script>
+
+</head>
+<body>
+Redirecting to destination…
 </body>
 </html>

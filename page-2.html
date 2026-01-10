@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Redirecting…</title>
-
-<script>
-const c = new URLSearchParams(location.search).get("c");
-if(!c){
- document.body.innerHTML="Invalid link";
- throw "";
-}
-
-const finalUrl = atob(c);
-setTimeout(()=>{
- location.href = finalUrl;
-},3000);
-</script>
-
+  <meta charset="UTF-8">
+  <title>Final Redirect</title>
 </head>
 <body>
-Redirecting to destination…
+
+<p>Opening link...</p>
+
+<script>
+const p = new URLSearchParams(window.location.search);
+const c = p.get("c");
+
+if(!c){
+  document.body.innerHTML = "Link not found";
+}else{
+  const original = atob(c);
+  setTimeout(()=>{
+    window.location.href = original;
+  }, 2000);
+}
+</script>
+
 </body>
 </html>

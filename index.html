@@ -1,82 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Redirecting...</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<style>
-body{
-  font-family:Arial;
-  background:#f3f4f6;
-  text-align:center;
-  padding:40px;
-}
-.box{
-  background:#fff;
-  padding:25px;
-  border-radius:10px;
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
-.btn{
-  display:none;
-  margin-top:20px;
-  padding:12px 22px;
-  background:#4f46e5;
-  color:#fff;
-  text-decoration:none;
-  border-radius:6px;
-}
-</style>
+<title>LinkSnap Redirect</title>
 </head>
-
 <body>
-
-<div class="box">
-  <h2 id="title">Please wait…</h2>
-  <p id="text">Loading your link</p>
-  <a id="btn" class="btn">Continue</a>
-</div>
-
-<script>
-function getParam(n){
-  return new URLSearchParams(window.location.search).get(n);
-}
-
-const c = getParam("c");
-const step = getParam("step") || "1";
-
-if(!c){
-  document.body.innerHTML="<h3>Link not found</h3>";
-  throw "";
-}
-
-let finalUrl;
-try{
-  finalUrl = decodeURIComponent(escape(atob(c)));
-}catch(e){
-  document.body.innerHTML="<h3>Invalid link</h3>";
-  throw "";
-}
-
-if(step==="1"){
-  document.getElementById("title").innerText="Step 1 of 2";
-  document.getElementById("text").innerText="Please wait 5 seconds…";
-
-  setTimeout(()=>{
-    location.href = "?step=2&c="+c;
-  },5000);
-}
-
-if(step==="2"){
-  document.getElementById("title").innerText="Almost done!";
-  document.getElementById("text").innerText="Click continue to open website";
-
-  const btn=document.getElementById("btn");
-  btn.style.display="inline-block";
-  btn.href=finalUrl;
-}
-</script>
-
+<h3>LinkSnap Redirect System</h3>
+<p>Please open a valid redirect link.</p>
 </body>
 </html>

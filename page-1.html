@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page 1</title>
-
-<script>
-const c = new URLSearchParams(location.search).get("c");
-if(!c){
- document.body.innerHTML="Invalid link";
- throw "";
-}
-
-setTimeout(()=>{
- location.href="page-2.html?c="+c;
-},3000);
-</script>
-
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
 </head>
 <body>
-<h3>Please wait…</h3>
+
+<p>Redirecting... Please wait</p>
+
+<script>
+const p = new URLSearchParams(window.location.search);
+const c = p.get("c");
+
+if(!c){
+  document.body.innerHTML = "Invalid link";
+}else{
+  setTimeout(()=>{
+    window.location.href = "/page-2.html?c=" + c;
+  }, 3000);
+}
+</script>
+
 </body>
 </html>

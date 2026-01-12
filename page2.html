@@ -6,19 +6,12 @@
 <h3>Opening destination…</h3>
 
 <script>
-const c = new URLSearchParams(location.search).get("c");
-
-if(!c){
-  document.body.innerText = "Invalid link";
-}else{
-  try{
-    const finalUrl = atob(c);
-    setTimeout(()=>{
-      location.href = finalUrl;
-    },3000);
-  }catch(e){
-    document.body.innerText = "Invalid redirect code";
-  }
+const c=new URLSearchParams(location.search).get("c");
+try{
+  const url=atob(c);
+  location.href=url;
+}catch(e){
+  document.body.innerText="Invalid link";
 }
 </script>
 

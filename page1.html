@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Step 1</title>
-</head>
+<head><title>Step 1</title></head>
 <body>
 
-<h3>Please wait...</h3>
+<h3>Please wait…</h3>
 
-<!-- 👉 Ads code yahan lagao (Monetag / etc) -->
+<!-- ADS HERE -->
 
 <script>
-  const p = new URLSearchParams(window.location.search);
-  const link = p.get("c");
+const c = new URLSearchParams(location.search).get("c");
 
-  if (!link) {
-    document.body.innerHTML = "Invalid link";
-  } else {
-    setTimeout(() => {
-      window.location.href = "page2.html?c=" + link;
-    }, 5000);
-  }
+if(!c){
+  document.body.innerText = "Invalid link";
+}else{
+  setTimeout(()=>{
+    location.href = "page2.html?c=" + c;
+  }, 5000);
+}
 </script>
 
 </body>

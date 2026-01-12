@@ -4,13 +4,9 @@
 <body>
 
 <script>
-const c = new URLSearchParams(location.search).get("c");
-
-if(!c){
-  document.body.innerText = "Link missing";
-}else{
-  location.href = "page1.html?c=" + c;
-}
+const c=new URLSearchParams(location.search).get("c");
+if(!c) document.body.innerText="Missing link";
+else location.href="page1.html?c="+c;
 </script>
 
 </body>

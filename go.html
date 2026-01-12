@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>LinkSnap Redirect</title>
-</head>
+<head><title>Redirect</title></head>
 <body>
 
-<p>Redirecting...</p>
-
 <script>
-  const p = new URLSearchParams(window.location.search);
-  const link = p.get("c");
+const c = new URLSearchParams(location.search).get("c");
 
-  if (!link) {
-    document.body.innerHTML = "Link not found";
-  } else {
-    window.location.href = "page1.html?c=" + link;
-  }
+if(!c){
+  document.body.innerText = "Link missing";
+}else{
+  location.href = "page1.html?c=" + c;
+}
 </script>
 
 </body>

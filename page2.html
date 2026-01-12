@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Final Step</title>
-</head>
+<head><title>Opening destination</title></head>
 <body>
 
-<h3>Opening destination...</h3>
+<h3>Opening destination…</h3>
 
 <script>
-  const p = new URLSearchParams(window.location.search);
-  const link = p.get("c");
+const c = new URLSearchParams(location.search).get("c");
 
-  if (!link) {
-    document.body.innerHTML = "Invalid redirect";
-  } else {
-    try {
-      const finalUrl = atob(link);
-      setTimeout(() => {
-        window.location.href = finalUrl;
-      }, 3000);
-    } catch (e) {
-      document.body.innerHTML = "Broken link";
-    }
+if(!c){
+  document.body.innerText = "Invalid link";
+}else{
+  try{
+    const finalUrl = atob(c);
+    setTimeout(()=>{
+      location.href = finalUrl;
+    },3000);
+  }catch(e){
+    document.body.innerText = "Invalid redirect code";
   }
+}
 </script>
 
 </body>

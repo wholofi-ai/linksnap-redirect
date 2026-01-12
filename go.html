@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Redirecting...</title>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("c");
-
-    if (!code) {
-      document.body.innerHTML = "Invalid link";
-    } else {
-      // TEMP TEST REDIRECT
-      setTimeout(() => {
-        window.location.href = "page1.html?c=" + code;
-      }, 1000);
-    }
-  </script>
+  <title>LinkSnap Redirect</title>
 </head>
 <body>
-Redirecting...
+
+<p>Redirecting...</p>
+
+<script>
+  const p = new URLSearchParams(window.location.search);
+  const link = p.get("c");
+
+  if (!link) {
+    document.body.innerHTML = "Link not found";
+  } else {
+    window.location.href = "page1.html?c=" + link;
+  }
+</script>
+
 </body>
 </html>

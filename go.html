@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head><title>Redirect</title></head>
+<head>
+<title>Continue</title>
+</head>
 <body>
 
+<h2>Please wait…</h2>
+
+<!-- PAGE-1 ADS -->
+<!-- Propeller / Hilltop / Banner yahin -->
+
 <script>
-const c=new URLSearchParams(location.search).get("c");
-if(!c) document.body.innerText="Missing link";
-else location.href="page1.html?c="+c;
+const c=new URLSearchParams(location.search).get('c');
+if(!c){
+ document.body.innerHTML='Link not found';
+}else{
+ setTimeout(()=>{
+  location.href='page2.html?c='+encodeURIComponent(c);
+ },5000);
+}
 </script>
 
 </body>

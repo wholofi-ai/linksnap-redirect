@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><title>Opening destination</title></head>
+<head>
+<title>Final Step</title>
+</head>
 <body>
 
-<h3>Opening destination…</h3>
+<h2>Click Continue</h2>
+
+<button onclick="go()">Continue</button>
+
+<!-- PAGE-2 ADS -->
+<!-- Popunder / Push / Vignette -->
 
 <script>
-const c=new URLSearchParams(location.search).get("c");
-try{
-  const url=atob(c);
-  location.href=url;
-}catch(e){
-  document.body.innerText="Invalid link";
+function go(){
+ const c=new URLSearchParams(location.search).get('c');
+ if(!c){alert('Invalid link');return;}
+ const real=atob(c);
+ location.href=real;
 }
 </script>
 
